@@ -13,10 +13,14 @@
 </head>
 <body>
 
+  <div class="logo-container">
+  <img src="ss.azkarylogo" alt="شعار الموقع" class="site-logo">
+</div>
+
   <div class="background"></div>
 
   <header>
-    <h1>أذكاري</h1>
+    <h1>.</h1>
     <p>ذكر، دعاء، قرآن، طمأنينة</p>
   </header>
 
@@ -97,7 +101,7 @@ document.getElementById('visitor-count').textContent = visits + ' زيارة';
 
 <script>
 fetch('https://api.countapi.xyz/hit/lavrry-site/visits')
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
     document.getElementById('visitor-count').textContent = data.value + ' زيارة';
   })

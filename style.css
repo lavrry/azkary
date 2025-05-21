@@ -223,4 +223,14 @@ nav a:hover {
 }
 
 
-  
+.logo-container {
+  position: absolute;
+  top: -25px;
+  right: 650px;
+  z-index: 1000;
+}
+
+.site-logo {
+  height: 150px; /* تقدر تعدل الحجم حسب اللي تبيه */
+  width: auto;
+}
