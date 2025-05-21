@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>أذكار الصباح والمساء</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f7;
+    margin: 0; padding: 0;
+    text-align: center;
+    direction: rtl;
+  }
+  header {
+    background-color: #2ecc71;
+    color: white;
+    padding: 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  nav {
+    margin: 1rem 0;
+  }
+  nav a {
+    margin: 0 0.6rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .btn-toggle {
+    background-color: #2ecc71; /* أخضر */
+    border: none;
+    padding: 12px 28px;
+    margin: 1rem 10px;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-toggle.inactive {
+    background-color: #bdc3c7; /* رمادي فاتح */
+    cursor: pointer;
+  }
+  .btn-toggle:hover:not(.inactive) {
+    background-color: #27ae60;
+  }
+  .zekr-container {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+    padding: 25px 20px;
+    display: none;
+  }
+  .zekr-container.active {
+    display: block;
+  }
+  .zekr-box {
+    margin-bottom: 22px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px 20px;
+    background: #faf9f5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .zekr-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+  }
+  .counter {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .counter button {
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .counter button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>اذكار الصباح والمساء</h1>
+</header>
+
+<nav>
+  <a href="index.html">الرئيسية</a>
+  <a href="ad3eya.html">الأدعية</a>
+  <a href="ayat.html">القران الكريم</a>
+  <a href="tafsir.html">الأربعون النووية</a>
+ </nav>
+
+
+<div>
+  <button id="btnMorning" class="btn-toggle active" onclick="showAzkar('morning')">أذكار الصباح</button>
+  <button id="btnEvening" class="btn-toggle inactive" onclick="showAzkar('evening')">أذكار المساء</button>
+</div>
+
+<!-- أذكار الصباح -->
+<div id="morning" class="zekr-container active">
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>أعوذُ بكلماتِ اللهِ التاماتِ من شرِّ ما خلق.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count1_morning">0</span>/3</span>
+      <button onclick="incrementCounter('count1_morning', 3, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم بك أصبحنا، وبك أمسينا، وبك نحيا، وبك نموت، وإليك النشور.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count2_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count2_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم أنت ربي، لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك علي، وأبوء بذنبي، فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count3_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count3_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أسألك خير ما في هذا اليوم وخير ما بعده، وأعوذ بك من شر ما في هذا اليوم وشر ما بعده.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count4_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count4_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>رضيت بالله ربا، وبالإسلام دينا، وبمحمد صلى الله عليه وسلم نبيا.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count5_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count5_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>سبحان الله وبحمده عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count6_morning">0</span>/100</span>
+      <button onclick="incrementCounter('count6_morning', 100, this)">تكرار</button>
+    </div>
+  </div>
+
+  
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>سبحان الله والحمد لله ولا إله إلا الله والله أكبر.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count7_morning">0</span>/33</span>
+      <button onclick="incrementCounter('count7_morning', 33, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count8_morning">0</span>/10</span>
+      <button onclick="incrementCounter('count8_morning', 10, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أسألك علما نافعاً، ورزقاً طيباً، وعملاً متقبلاً.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count9_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count9_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+  
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن، وضلع الدين وغلبة الرجال.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count10_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count10_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>أصبحنا وأصبح الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count11_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count11_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>رضيت بالله رباً، وبالإسلام ديناً، وبمحمد صلى الله عليه وسلم نبياً.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count12_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count12_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count13_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count13_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم اجعل لي نوراً في قبري، واجعلني من أهل الجنة.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count14_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count14_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أعوذ بك من عذاب جهنم، ومن عذاب القبر، ومن فتنة المحيا والممات، ومن شر فتنة المسيح الدجال.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count15_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count15_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك المصير.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count16_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count16_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>سبحان الله وبحمده، سبحان الله العظيم.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count17_morning">0</span>/100</span>
+      <button onclick="incrementCounter('count17_morning', 100, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count18_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count18_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count19_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count19_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أعوذ بك من الكفر والفقر، وأعوذ بك من عذاب القبر، لا إله إلا أنت.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count20_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count20_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>رضيت بالله ربا، وبالإسلام دينا، وبمحمد صلى الله عليه وسلم نبيا ورسولا.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count21_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count21_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أسألك موجبات رحمتك، وعزائم مغفرتك، والسلامة من كل إثم، والغنيمة من كل بر، والفوز بالجنة، والنجاة من النار.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count22_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count22_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم بك أصبحت وبك أمسيت، وبك أحيا وبك أموت، وإليك النشور.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count23_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count23_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أصبحت أشهدك وأشهد حملة عرشك وملائكتك وجميع خلقك أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمداً عبدك ورسولك.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count24_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count24_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>رب أسألك خير هذا اليوم فتحه ونصره ونوره وبركته وهداه، وأعوذ بك من شر ما فيه وشر ما بعده.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count25_morning">0</span>/1</span>
+      <button onclick="incrementCounter('count25_morning', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+    
+  <!-- أذكار المساء -->
+     </div>
+<div id="evening" class="zekr-container">
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>أعوذ بكلمات الله التامات من شر ما خلق.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count1_evening">0</span>/3</span>
+      <button onclick="incrementCounter('count1_evening', 3, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count2_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count2_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count3_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count3_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أسألك خير هذه الليلة وخير ما بعدها، وأعوذ بك من شر هذه الليلة وشر ما بعدها.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count4_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count4_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+<div class="zekr-box">
+    <div class="zekr-text">
+      <p>رضيت بالله رباً، وبالإسلام ديناً، وبمحمد صلى الله عليه وسلم نبياً ورسولاً.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count5_evening">0</span>/3</span>
+      <button onclick="incrementCounter('count5_evening', 3, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>سبحان الله وبحمده، عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count6_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count6_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم إني أعوذ بك من الكفر والفقر، وأعوذ بك من عذاب القبر، لا إله إلا أنت.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count7_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count7_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم اجعلني من التوابين واجعلني من المتطهرين.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count8_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count8_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+  <div class="zekr-box">
+    <div class="zekr-text">
+      <p>اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.</p>
+    </div>
+    <div class="counter">
+      <span>التكرار: <span id="count9_evening">0</span>/1</span>
+      <button onclick="incrementCounter('count9_evening', 1, this)">تكرار</button>
+    </div>
+  </div>
+
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count10_evening">0</span>/3</span>
+    <button onclick="incrementCounter('count10_evening', 3, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>رضيت بالله رباً، وبالإسلام ديناً، وبمحمد صلى الله عليه وسلم نبياً.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count11_evening">0</span>/3</span>
+    <button onclick="incrementCounter('count11_evening', 3, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم إني أعوذ بك من الكسل، والهرم، والمأثم والمغرم.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count12_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count12_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ وأبوء بذنبي، فاغفر لي فإنه لا يغفر الذنوب إلا أنت.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count13_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count13_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم بك أمسينا وبك أصبحنا، وبك نحيا وبك نموت، وإليك المصير.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count14_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count14_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم إني أسألك العفو والعافية في الدنيا والآخرة.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count15_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count15_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم إني أعوذ بك من زوال نعمتك، وتحول عافيتك، وفجاءة نقمتك، وجميع سخطك.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count16_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count16_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم احفظني من بين يدي ومن خلفي وعن يميني وعن شمالي ومن فوقي ومن تحتي وأعوذ بعظمتك أن أغتال من تحتي.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count17_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count17_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم إني أعوذ بك من الجبن والبخل وأعوذ بك من أن أُرد إلى أرذل العمر وأعوذ بك من فتنة الدنيا وعذاب القبر.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count18_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count18_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count19_evening">0</span>/1</span>
+    <button onclick="incrementCounter('count19_evening', 1, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>أستغفر الله الذي لا إله إلا هو الحي القيوم وأتوب إليه.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count20_evening">0</span>/3</span>
+    <button onclick="incrementCounter('count20_evening', 3, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>اللهم صل وسلم على نبينا محمد.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count21_evening">0</span>/10</span>
+    <button onclick="incrementCounter('count21_evening', 10, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>سبحان الله وبحمده.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count22_evening">0</span>/100</span>
+    <button onclick="incrementCounter('count22_evening', 100, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count23_evening">0</span>/100</span>
+    <button onclick="incrementCounter('count23_evening', 100, this)">تكرار</button>
+  </div>
+</div>
+
+<div class="zekr-box">
+  <div class="zekr-text">
+    <p>أعوذ بكلمات الله التامات من شر ما خلق.</p>
+  </div>
+  <div class="counter">
+    <span>التكرار: <span id="count24_evening">0</span>/3</span>
+    <button onclick="incrementCounter('count24_evening', 3, this)">تكرار</button>
+  </div>
+</div>
+
+<script>
+function showAzkar(type) {
+  const morning = document.getElementById('morning');
+  const evening = document.getElementById('evening');
+  const btnMorning = document.getElementById('btnMorning');
+  const btnEvening = document.getElementById('btnEvening');
+
+  if (type === 'morning') {
+    morning.classList.add('active');
+    evening.classList.remove('active');
+    btnMorning.classList.add('active');
+    btnMorning.classList.remove('inactive');
+    btnEvening.classList.add('inactive');
+    btnEvening.classList.remove('active');
+  } else {
+    evening.classList.add('active');
+    morning.classList.remove('active');
+    btnEvening.classList.add('active');
+    btnEvening.classList.remove('inactive');
+    btnMorning.classList.add('inactive');
+    btnMorning.classList.remove('active');
+  }
+}
+
+function incrementCounter(id, maxCount, btn) {
+  const counterSpan = document.getElementById(id);
+  let currentCount = parseInt(counterSpan.textContent);
+  if (currentCount < maxCount) {
+    currentCount++;
+    counterSpan.textContent = currentCount;
+    if (currentCount === maxCount) {
+      btn.disabled = true;
+    }
+  }
+}
+</script>
+
+</body>
+</html>
