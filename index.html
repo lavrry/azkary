@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>موقع أذكاري</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="موقع أذكاري يحتوي على أذكار الصباح والمساء، أدعية، أحاديث نبوية، تفسير مبسط وأكثر.">
+<meta name="keywords" content="أذكار, دعاء, أدعية, أحاديث, قرآن, إسلام, أذكاري">
+<meta name="author" content="أذكاري">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <header>
+    <h1>أذكاري</h1>
+    <p>ذكر، دعاء، قرآن، طمأنينة</p>
+  </header>
+
+  <nav>
+    <a href="ad3eya.html">الأدعية</a>
+    <a href="ayat.html">القران الكريم</a>
+    <a href="azkar.html">أذكار الصباح والمساء</a>
+    <a href="tafsir.html">الأربعون النووية</a>
+  </nav>
+
+  <div class="intro">
+    <p>مرحبًا بك في موقعك الإسلامي الشامل. تجد هنا أدعية مأثورة، آيات قرآنية مباركة، أذكار صباحية ومسائية، وتفسير ميسر للقرآن الكريم.</p>
+  </div>
+
+  <div class="ayah-box" id="ayahBox">
+    <p id="ayah">﴿ وَما خَلَقتُ الجِنَّ وَالإِنسَ إِلّا لِيَعبُدونِ ﴾</p>
+  </div>
+
+  <script>
+    const ayahs = [
+      "﴿ إِنَّ مَعَ العُسرِ يُسرًا ﴾",
+      "﴿ أَلا بِذِكرِ اللَّهِ تَطمَئِنُّ القُلوبُ ﴾",
+      "﴿ فَاذكُروني أَذكُركُم ﴾",
+      "﴿ وَما تَوفيقي إِلّا بِاللَّهِ ﴾",
+      "﴿ وَمَن يَتَّقِ اللَّهَ يَجعَل لَهُ مَخرَجًا ﴾",
+      "﴿ وَما خَلَقتُ الجِنَّ وَالإِنسَ إِلّا لِيَعبُدونِ ﴾",
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % ayahs.length;
+      document.getElementById("ayah").textContent = ayahs[index];
+    }, 5000);
+  </script>
+
+<div class="info-boxes">
+  <div class="info-box">
+    <h3>عدد الزوار</h3>
+    <p id="visitor-count">...جاري التحميل</p>
+  </div>
+
+  <div class="info-box">
+    <h3>الوقت والتاريخ</h3>
+    <p id="time-now">--:--</p>
+    <p id="hijri-date">جاري التحميل...</p>
+  </div>
+</div>
+
+<script>
+// التاريخ والوقت
+function updateDateTime() {
+  const now = new Date();
+  const timeNow = now.toLocaleTimeString('ar-EG');
+  document.getElementById('time-now').textContent = timeNow;
+
+  // التاريخ الهجري
+  let hijriNow = new Date();
+hijriNow.setDate(hijriNow.getDate() - 1); 
+
+const hijriDate = new Intl.DateTimeFormat('ar-TN-u-ca-islamic', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+}).format(hijriNow);
+
+  document.getElementById('hijri-date').textContent = hijriDate;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
+
+// عدد الزوار (محلي فقط - للمستقبل نربطه بسيرفر أو GitHub API)
+let visits = localStorage.getItem('visitCount');
+visits = visits ? parseInt(visits) + 1 : 1;
+localStorage.setItem('visitCount', visits);
+document.getElementById('visitor-count').textContent = visits + ' زيارة';
+</script>
+
+<script>
+fetch('https://api.countapi.xyz/hit/lavrry-site/visits')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('visitor-count').textContent = data.value + ' زيارة';
+  })
+
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-698DH4YGEJ');
+</script>
+<!-- End Google Analytics -->
+
+</body>
+</html>
